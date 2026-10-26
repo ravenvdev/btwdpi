@@ -78,6 +78,47 @@ Türkiye'de Discord ve zaman zaman Roblox'un bazı bölümleri (oyun görselleri
 
 > Bir sonraki bilgisayar açılışında uygulama **kendiliğinden** arka planda başlar (istersen bu özelliği Ayarlar'dan kapatabilirsin).
 
+
+## 🛡️ Antivirüs / VirusTotal Hakkında
+
+BTWDPI'ı VirusTotal'de taradığında **70+ antivirüs motorundan yalnızca 2'si** uyarı verebilir:
+
+| Motor | Sonuç |
+|-------|-------|
+| Bkav Pro | `W32.Malware.82E860B` |
+| Symantec | `ML.Attribute.HighConfidence` |
+
+🔗 **Güncel tarama sonucu:** [VirusTotal raporunu görüntüle](https://www.virustotal.com/gui/file/9bc7fc5593611c9be2397e582dad632c0fd3a89ed51cf9a0b64da6d21eb6c800?nocache=1)
+
+### Bu bir virüs mi? **Hayır.** Yanlış alarmdır (false positive).
+
+İki uyarının da ortak özelliği: **imza tabanlı değil, makine öğrenmesi (ML) tahmini.** Yani dosyada gerçek bir zararlı kod bulunmuş değil — algoritmalar "şüpheli olabilir" diye tahmin yürütüyor. Sebepleri:
+
+- **`ML.Attribute.HighConfidence` (Symantec)** → "Bu dosyayı daha önce hiç görmedim, yeni ve az yayılmış" demektir. Zararlı davranış tespiti **değildir**; yalnızca dosyanın yeni/nadir olmasına verilen bir güvensizlik puanıdır. İndirme sayısı arttıkça bu uyarı kendiliğinden kaybolur.
+- **`W32.Malware` (Bkav)** → Genel bir sezgisel (heuristic) tahmindir. Bkav, sektörde en yüksek yanlış-pozitif oranına sahip motorlardan biridir.
+
+### Peki neden tetikleniyor?
+
+BTWDPI'ın engellemeyi aşmak için yaptığı teknik işlemler, zararlı yazılımların da kullandığı işlemlere **yüzeyde benzer**:
+
+- Ağ paketlerini inceleyip düzenlemek (WinDivert çekirdek sürücüsü),
+- Yönetici yetkisiyle çalışmak,
+- Windows ile otomatik başlamak için görev oluşturmak.
+<img width="1920" height="959" alt="image" src="https://github.com/user-attachments/assets/4f5f508b-0d3b-4a54-b0b9-879f1174d78d" />
+
+Bunların hepsi uygulamanın **çalışması için zorunludur** — bunlar olmadan DPI/DNS engellemesi aşılamaz. Antivirüs motorları niyeti ayırt edemediği için tedbiren işaretler. **Aynı durum GoodbyeDPI, zapret gibi bu türden tüm araçlar için geçerlidir.**
+
+### Güvenmek istemiyorsan
+
+- Yukarıdaki VirusTotal linkinden **70+ motorun geri kalanının temiz** sonuç verdiğini kendin görebilirsin.
+- İstersen uygulamayı [sanal makinede / Sandbox'ta](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-overview) dene.
+
+### Çalıştırmak için (Defender engelliyorsa)
+
+1. **Windows Güvenliği** → **Virüs ve tehdit koruması** → **Ayarları yönet**
+2. **Dışlamalar** → **Dışlama ekle veya kaldır** → **Klasör ekle**
+3. `C:\Program Files\BTWDPI` klasörünü seç.
+
 ---
 
 ## Kullanım
