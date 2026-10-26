@@ -23,6 +23,11 @@ Türkiye'de Discord ve zaman zaman Roblox'un bazı bölümleri (oyun görselleri
 
 **BTWDPI farklı çalışır:** VPN kurmaz, trafiğini başka bir sunucuya yönlendirmez. Sadece Discord/Roblox'a giden paketleri, engellemeyi aşacak şekilde düzenleyip **doğrudan** gönderir. Geri kalan internet trafiğine **hiç dokunmaz** — ne yavaşlama, ne ping artışı, ne gizlilik riski.
 
+<img width="1920" height="959" alt="image" src="https://github.com/user-attachments/assets/045aee12-7544-4491-bd73-fe1396d83712" />
+
+<img width="1040" height="660" alt="image" src="https://github.com/user-attachments/assets/9762c863-dca7-4f71-9ae7-a83c9372453c" />
+
+
 ---
 
 ## Neden BTWDPI? (Artıları)
