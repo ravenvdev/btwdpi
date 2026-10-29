@@ -60,6 +60,7 @@ Türkiye'de Discord ve zaman zaman Roblox'un bazı bölümleri (oyun görselleri
 - ✅ **Roblox koruması** — rbxcdn görselleri, avatarlar, oyun küçük resimleri, thumbnail'lar.
 - ✅ **DoH (DNS-over-HTTPS)** — operatörün kirli DNS'ini bypass ederek gerçek sunucu adreslerini bulur.
 - ✅ **Akıllı paket motoru** — yalnızca hedef trafiğe fake-TTL + paket bölme tekniği uygular.
+- ✅ **Gömülü sürücü** — gerekli WinDivert sürücüsü exe'nin içinde gelir, hiçbir şey indirmez.
 - ✅ **Otomatik IP güncelleme** — sunucu adresleri değişirse kendini 15 dakikada bir yeniler.
 - ✅ **Sistem tepsisi** — küçültünce görev çubuğundan kaybolur, tepside sessizce bekler.
 - ✅ **Windows ile başlat** — açılışta otomatik, arka planda, tek tıkla aç/kapat.
@@ -73,15 +74,28 @@ Türkiye'de Discord ve zaman zaman Roblox'un bazı bölümleri (oyun görselleri
 1. [**Releases**](../../releases) sayfasından en güncel `BTWDPI.exe` dosyasını indir.
 2. İndirdiğin dosyaya **çift tıkla**.
 3. Windows yönetici izni isteyecek → **Evet** de. *(Gerekli, çünkü ağ sürücüsünü yüklemesi gerekiyor.)*
-4. Uygulama açılır, gerekli bileşeni kendisi indirir ve çalışmaya başlar.
+4. Uygulama açılır, gerekli sürücüyü kendisi kurar ve çalışmaya başlar. *(Hiçbir şey indirmez — her şey exe'nin içinde.)*
 5. Discord'u / Roblox'u aç — artık çalışıyor olmalı. 🎉
 
 > Bir sonraki bilgisayar açılışında uygulama **kendiliğinden** arka planda başlar (istersen bu özelliği Ayarlar'dan kapatabilirsin).
 
+---
+
+## Kullanım
+
+- **Ana ekrandaki büyük düğme** korumayı başlatır/durdurur.
+- **Korumalar** kartından Discord ve Roblox'u ayrı ayrı aç/kapat.
+- **Sarı küçült düğmesi** → uygulamayı sistem tepsisine alır (görev çubuğunda görünmez).
+- **Tepsi simgesine tıkla** → geri getirir. **Sağ tık** → hızlı menü (Göster / Başlat-Durdur / Çıkış).
+- **Ayarlar** → Windows ile başlatmayı aç/kapat, sürücüyü yönet, dosya konumlarını gör.
+
+---
 
 ## 🛡️ Antivirüs / VirusTotal Hakkında
 
-BTWDPI'ı VirusTotal'de taradığında **70+ antivirüs motorundan yalnızca 2'si** uyarı verebilir:
+BTWDPI normalde Windows Defender veya Chrome tarafından **engellenmez** — gerekli sürücü exe'nin içine meşru şekilde (sıkıştırılmış) gömülüdür, dışarıdan hiçbir şey indirilmez.
+
+Yine de VirusTotal gibi toplu tarama servislerinde **70+ antivirüs motorundan 1-2 tanesi** uyarı verebilir:
 
 | Motor | Sonuç |
 |-------|-------|
@@ -104,6 +118,7 @@ BTWDPI'ın engellemeyi aşmak için yaptığı teknik işlemler, zararlı yazıl
 - Ağ paketlerini inceleyip düzenlemek (WinDivert çekirdek sürücüsü),
 - Yönetici yetkisiyle çalışmak,
 - Windows ile otomatik başlamak için görev oluşturmak.
+
 <img width="1920" height="959" alt="image" src="https://github.com/user-attachments/assets/4f5f508b-0d3b-4a54-b0b9-879f1174d78d" />
 
 Bunların hepsi uygulamanın **çalışması için zorunludur** — bunlar olmadan DPI/DNS engellemesi aşılamaz. Antivirüs motorları niyeti ayırt edemediği için tedbiren işaretler. **Aynı durum GoodbyeDPI, zapret gibi bu türden tüm araçlar için geçerlidir.**
@@ -113,42 +128,13 @@ Bunların hepsi uygulamanın **çalışması için zorunludur** — bunlar olmad
 - Yukarıdaki VirusTotal linkinden **70+ motorun geri kalanının temiz** sonuç verdiğini kendin görebilirsin.
 - İstersen uygulamayı [sanal makinede / Sandbox'ta](https://learn.microsoft.com/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-overview) dene.
 
-### Çalıştırmak için (Defender engelliyorsa)
+### Yine de engellenirse (nadiren)
+
+Bir antivirüs yine de ısrarcı olursa Windows Defender'a istisna ekle:
 
 1. **Windows Güvenliği** → **Virüs ve tehdit koruması** → **Ayarları yönet**
 2. **Dışlamalar** → **Dışlama ekle veya kaldır** → **Klasör ekle**
 3. `C:\Program Files\BTWDPI` klasörünü seç.
-
----
-
-## Kullanım
-
-- **Ana ekrandaki büyük düğme** korumayı başlatır/durdurur.
-- **Korumalar** kartından Discord ve Roblox'u ayrı ayrı aç/kapat.
-- **Sarı küçült düğmesi** → uygulamayı sistem tepsisine alır (görev çubuğunda görünmez).
-- **Tepsi simgesine tıkla** → geri getirir. **Sağ tık** → hızlı menü (Göster / Başlat-Durdur / Çıkış).
-- **Ayarlar** → Windows ile başlatmayı aç/kapat, sürücüyü yönet, dosya konumlarını gör.
-
----
-
-## ⚠️ Antivirüs uyarısı (önemli)
-
-Windows Defender veya başka bir antivirüs, BTWDPI'ı **yanlışlıkla** "tehlikeli" olarak işaretleyebilir (örn. `Trojan:Win32/Bearfoos`).
-
-**Bu bir virüs değildir — yanlış alarmdır (false positive).**
-
-Sebebi: BTWDPI'ın engellemeyi aşmak için yaptığı işler (ağ sürücüsü yükleme, paketleri düzenleme, yönetici yetkisiyle çalışma) teknik olarak zararlı yazılımların da yaptığı işlere benzer. Antivirüs bunu ayırt edemeyip tedbir amaçlı işaretler. Aynı durum bu türden **tüm** DPI araçları (GoodbyeDPI dahil) için geçerlidir.
-
-### Çözüm
-
-Windows Defender'a istisna ekle:
-
-1. **Windows Güvenliği**'ni aç.
-2. **Virüs ve tehdit koruması** → **Ayarları yönet**.
-3. **Dışlamalar** → **Dışlama ekle veya kaldır**.
-4. **Klasör ekle** → `C:\Program Files\BTWDPI` klasörünü seç.
-
-Bu kadar. Artık engellemez.
 
 ---
 
